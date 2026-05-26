@@ -1,0 +1,26 @@
+---
+- name: Configure web server
+  hosts: webservers
+  become: yes
+
+  tasks:
+    - name: Enable nginx via amazon-linux-extras
+      command: amazon-linux-extras enable nginx1
+      args:
+        creates: /etc/yum.repos.d/amzn2extra-nginx1.repo
+
+    - name: Install nginx
+      yum:
+        name: nginx
+        state: present
+
+    - name: Start and enable nginx
+      service:
+        name: nginx
+        state: started
+        enabled: yes
+
+    - name: Deploy Hello World page
+      copy:
+        content: "<html><body><h1>Hello, World!</h1></body></html>"
+        dest: /usr/share/nginx/html/index.html
