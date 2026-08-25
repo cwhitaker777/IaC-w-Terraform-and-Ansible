@@ -1,4 +1,4 @@
-# Tech Challenge 3 — Infrastructure as Code with Terraform and Ansible
+# Tech Challenge — Infrastructure as Code with Terraform and Ansible
 
 ## Overview
 
